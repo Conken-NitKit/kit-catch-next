@@ -71,7 +71,6 @@ const InputContainer = styled.label<{ isNull: boolean, src: string }>`
     vertical-align: top;
     display: inline-block;
     position: relative;
-    //background: url(${`${process.env.PUBLIC_URL}/school.svg`}) center;
     background: url(${({ src }) => src}) center;
     background-size: cover;
   }
@@ -136,46 +135,45 @@ const DeleteButton = styled.div`
 `;
 
 interface Props {
-  isNew: boolean
+  isNew: boolean,
   id: string,
-  setId: React.Dispatch<React.SetStateAction<string>>,
+  setId: (arg: string) => void,
   name: string,
-  setName: React.Dispatch<React.SetStateAction<string>>,
+  setName: (arg: string) => void,
   subject: string,
-  setSubject: React.Dispatch<React.SetStateAction<string>>,
+  setSubject: (arg: string) => void,
   deadline: string,
-  setDeadline: React.Dispatch<React.SetStateAction<string>>,
+  setDeadline: (arg: string) => void,
   description: string,
-  setDescription: React.Dispatch<React.SetStateAction<string>>,
+  setDescription: (arg: string) => void,
   isOpen: boolean,
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  setOpen: (arg: boolean) => void,
   tasks: { id: string, name: string, subject: string, deadline: string, description: string }[] | null,
   setTasks: React.Dispatch<React.SetStateAction<{ id: string, name: string, subject: string, deadline: string, description: string }[] | null>>,
 }
 
-export default function TableForm(props: Props) {
-  if (props.id === '') props.setId(generateUuid())
+export default function TableForm({ isNew, id, setId, name, setName, subject, setSubject, deadline, setDeadline, description, setDescription, isOpen, setOpen, tasks, setTasks }: Props) {
+  if (id === '') setId(generateUuid())
   return (
-    <FormContainer isOpen={props.isOpen}>
-      <CloseIcon onClick={() => props.setOpen(false)} />
+    <FormContainer isOpen={isOpen}>
+      <CloseIcon onClick={() => setOpen(false)} />
       <HeaderTitle>課題</HeaderTitle>
       <SaveButton onClick={() => {
         console.log([
-          props.id,
-          props.name,
-          props.subject,
-          props.deadline,
-          props.description
+          id,
+          name,
+          subject,
+          deadline,
+          description
         ])
-        props.setTasks(() => {
-          const tasks = props.tasks
+        setTasks(() => {
           if (!tasks) return tasks
           tasks.push({
-            id: props.id,
-            name: props.name,
-            subject: props.subject,
-            deadline: props.deadline,
-            description: props.description
+            id: id,
+            name: name,
+            subject: subject,
+            deadline: deadline,
+            description: description
           })
           const taskValue = tasks.reverse().filter((elm, i, self) => (
             self.findIndex(e =>
@@ -184,64 +182,64 @@ export default function TableForm(props: Props) {
           ))
           return taskValue
         })
-        props.setOpen(false)
+        setOpen(false)
       }}>保存</SaveButton>
       <HeadBar />
 
       <InputContainer
         htmlFor={'name-input'}
         isNull={false}
-        src={`${process.env.PUBLIC_URL}/document-text.svg`}
+        src={"/document-text.svg"}
       >
         <i />
         <input
           id={'name-input'}
-          value={props.name}
-          onChange={e => props.setName(e.target.value)}
+          value={name}
+          onChange={e => setName(e.target.value)}
           placeholder={'課題名'} />
       </InputContainer>
 
       <InputContainer
         htmlFor={'subject-input'}
         isNull={false}
-        src={`${process.env.PUBLIC_URL}/school.svg`}
+        src={"/school.svg"}
       >
         <i />
         <input
           id={'subject-input'}
-          value={props.subject}
-          onChange={e => props.setSubject(e.target.value)}
+          value={subject}
+          onChange={e => setSubject(e.target.value)}
           placeholder={'科目'} />
       </InputContainer>
 
       <InputContainer
         htmlFor={'deadline-input'}
-        isNull={props.deadline === ''}
-        src={`${process.env.PUBLIC_URL}/alarm-outline.svg`}
+        isNull={deadline === ''}
+        src={"/alarm-outline.svg"}
       >
         <i />
         <input
           type={'date'}
           id={'deadline-input'}
-          value={props.deadline}
-          onChange={e => props.setDeadline(e.target.value)}
+          value={deadline}
+          onChange={e => setDeadline(e.target.value)}
         />
       </InputContainer>
 
       <DescriptionTextArea
-        value={props.description}
-        onChange={e => props.setDescription(e.target.value)}
+        value={description}
+        onChange={e => setDescription(e.target.value)}
         placeholder={'自由にメモするためのスペースです！'}
       />
 
-      {!props.isNew && <DeleteButton onClick={() => {
+      {!isNew && <DeleteButton onClick={() => {
         if (
-          window.confirm("本当に削除してもよろしいですか？") && props.tasks
+          window.confirm("本当に削除してもよろしいですか？") && tasks
         ) {
-          props.setTasks(
-            props.tasks.filter(task => task.id !== props.id)
+          setTasks(
+            tasks.filter(task => task.id !== id)
           )
-          props.setOpen(false)
+          setOpen(false)
         }
       }}>
         <p>削除ボタン</p>

@@ -76,7 +76,7 @@ export default function NavigationBar({ page }: Props) {
     <>
       <NavigationContainer>
         <NavigationItem>
-          <a href={"/time-table"}>
+          <a href={"/table"}>
             <NavigationImage src={
               page === "時間割"
                 ? "/nav-selected-icon-table.svg"
@@ -118,7 +118,6 @@ export default function NavigationBar({ page }: Props) {
             <NavigationText selected={page === "設定"}>設定</NavigationText>
           </a>
         </NavigationItem>
-
       </NavigationContainer>
     </>
   )

@@ -48,7 +48,7 @@ const TaskDescription = styled.p`
 `
 
 interface Props {
-  id: string
+  id: string,
   name: string,
   subject: string,
   deadline: string,

@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
   display: table;
   table-layout: fixed;
   border-bottom: solid lightgray 0.5px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   z-index: 1;
 `;
 
@@ -30,7 +30,7 @@ const HeaderText = styled.p`
 `;
 
 interface Props {
-  page: string
+  page: string;
 }
 
 export default function NavigationBar({ page }: Props) {

@@ -39,7 +39,7 @@ const CreateTaskText = styled.p`
 `;
 
 interface Props {
-  onClick: () => void
+  onClick: () => void;
 }
 
 export default function CreateTaskButton({ onClick }: Props) {

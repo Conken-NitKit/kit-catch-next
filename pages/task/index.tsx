@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header from "../../components/task/Header";
+import Header from "../../components/common/Header";
 import TaskItem from "../../components/task/Task";
-import NavigationBar from "../../components/task/NavigationBar";
+import NavigationBar from "../../components/common/NavigationBar";
 import TaskForm from "../../components/task/TaskForm";
 import CreateTaskButton from "../../components/task/CreateTaskButton";
 
