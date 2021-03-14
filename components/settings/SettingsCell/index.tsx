@@ -4,6 +4,8 @@ import styled from "styled-components";
 const TableCell = styled.div`
   width: 100vw;
   height: 42px;
+  position: relative;
+  bottom: 8px;
   border-top: solid #E4EFEF 1px;
   &:last-of-type {
     border-bottom: solid #E4EFEF 1px;
