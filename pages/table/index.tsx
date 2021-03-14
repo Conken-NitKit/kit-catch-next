@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import Header from "../../components/common/Header";
-import TimeTable from "../../components/table/TimeTable";
-import NavigationBar from "../../components/common/NavigationBar";
-import TableForm from "../../components/table/TableForm";
+import { useState } from "react";
+import { Header, NavigationBar } from "components/common";
+import { TableForm, TimeTable } from "components/table"
 
 export default function Table() {
 

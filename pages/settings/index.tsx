@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import Header from "../../components/common/Header";
-import NavigationBar from "../../components/common/NavigationBar";
-import SettingsCell from "../../components/settings/SettingsCell";
+import { useState } from "react";
 import styled from "styled-components";
+import { Header, NavigationBar } from "components/common";
+import { SettingsCell } from "components/settings";
 
 const SettingsTable = styled.div`
   padding: 64px 0;

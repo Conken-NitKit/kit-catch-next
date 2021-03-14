@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.div<{ isOpen: boolean }>`
-  bottom: ${({ isOpen }) => isOpen ? '0' : '-100vh'};
+  bottom: ${({ isOpen }) => (isOpen ? "0" : "-100vh")};
   left: 1vw;
   height: 98vh;
   width: 98vw;
@@ -11,7 +10,7 @@ const FormContainer = styled.div<{ isOpen: boolean }>`
   position: fixed;
   text-align: center;
   flex-wrap: wrap;
-  transition: all .3s;
+  transition: all 0.3s;
   background: white;
   z-index: 2;
 `;
@@ -40,7 +39,7 @@ const SaveButton = styled.p`
   font-size: 17px;
   line-height: 30px;
   margin: 0;
-  color: #1DA1F2;
+  color: #1da1f2;
   text-shadow: 0 0 3px rgba(29, 161, 242, 0.4);
 `;
 
@@ -62,7 +61,7 @@ const InputContainer = styled.label`
   background: #ddd;
   width: 345px;
   margin-left: 8px;
-  @media screen and (min-width :768px) {
+  @media screen and (min-width: 768px) {
     width: 25vw;
   }
   i {
@@ -85,7 +84,7 @@ const InputContainer = styled.label`
     color: #666;
     letter-spacing: 1px;
     &::placeholder {
-      color: #A0A0A0;
+      color: #a0a0a0;
     }
   }
 `;
@@ -108,102 +107,117 @@ const DescriptionTextArea = styled.textarea`
   border: none;
   outline: none;
   &::placeholder {
-    color: #A0A0A0;
+    color: #a0a0a0;
   }
 `;
 
 interface Props {
-  day: string,
-  time: number,
-  teacher: string,
-  setTeacher: (arg: string) => void,
-  subject: string,
-  setSubject: (arg: string) => void,
-  description: string,
-  setDescription: (arg: string) => void,
-  isOpen: boolean,
-  setOpen: (arg: boolean) => void,
+  day: string;
+  time: number;
+  teacher: string;
+  setTeacher: (arg: string) => void;
+  subject: string;
+  setSubject: (arg: string) => void;
+  description: string;
+  setDescription: (arg: string) => void;
+  isOpen: boolean;
+  setOpen: (arg: boolean) => void;
   tableValue: {
-    [key: string]: { subject: string, description: string, teacher: string }[],
-    monday: { subject: string, description: string, teacher: string }[],
-    tuesday: { subject: string, description: string, teacher: string }[],
-    wednesday: { subject: string, description: string, teacher: string }[],
-    thursday: { subject: string, description: string, teacher: string }[],
-    friday: { subject: string, description: string, teacher: string }[]
-  } | null
-  setTableValue: React.Dispatch<React.SetStateAction<{
-    monday: { subject: string, description: string, teacher: string }[],
-    tuesday: { subject: string, description: string, teacher: string }[],
-    wednesday: { subject: string, description: string, teacher: string }[],
-    thursday: { subject: string, description: string, teacher: string }[],
-    friday: { subject: string, description: string, teacher: string }[]
-  } | null>>
+    [key: string]: { subject: string; description: string; teacher: string }[];
+    monday: { subject: string; description: string; teacher: string }[];
+    tuesday: { subject: string; description: string; teacher: string }[];
+    wednesday: { subject: string; description: string; teacher: string }[];
+    thursday: { subject: string; description: string; teacher: string }[];
+    friday: { subject: string; description: string; teacher: string }[];
+  } | null;
+  setTableValue: React.Dispatch<
+    React.SetStateAction<{
+      monday: { subject: string; description: string; teacher: string }[];
+      tuesday: { subject: string; description: string; teacher: string }[];
+      wednesday: { subject: string; description: string; teacher: string }[];
+      thursday: { subject: string; description: string; teacher: string }[];
+      friday: { subject: string; description: string; teacher: string }[];
+    } | null>
+  >;
 }
 
-export default function TableForm({ day, time, teacher, setTeacher, subject, setSubject, description, setDescription, isOpen, setOpen, tableValue, setTableValue }: Props) {
+export const TableForm = ({
+  day,
+  time,
+  teacher,
+  setTeacher,
+  subject,
+  setSubject,
+  description,
+  setDescription,
+  isOpen,
+  setOpen,
+  tableValue,
+  setTableValue,
+}: Props) => {
   return (
     <FormContainer isOpen={isOpen}>
       <CloseIcon onClick={() => setOpen(false)} />
-      <HeaderTitle>{
-        day === 'monday'
+      <HeaderTitle>
+        {day === "monday"
           ? "月"
-          : day === 'tuesday'
-            ? "火"
-            : day === 'wednesday'
-              ? "水"
-              : day === 'thursday'
-                ? "木"
-                : day === 'friday'
-                  ? "金"
-                  : ""
-      }曜{time + 1}限</HeaderTitle>
-      <SaveButton onClick={() => {
-        console.log(
-          day,
-          time,
-          subject,
-          description,
-          teacher
-        )
-        setTableValue(
-          () => {
-            if (!tableValue) return tableValue
+          : day === "tuesday"
+          ? "火"
+          : day === "wednesday"
+          ? "水"
+          : day === "thursday"
+          ? "木"
+          : day === "friday"
+          ? "金"
+          : ""}
+        曜{time + 1}限
+      </HeaderTitle>
+      <SaveButton
+        onClick={() => {
+          console.log(day, time, subject, description, teacher);
+          setTableValue(() => {
+            if (!tableValue) return tableValue;
             tableValue[day][time] = {
               subject: subject,
               description: description,
-              teacher: teacher
-            }
-            return tableValue
-          }
-        )
-        setOpen(false)
-      }}>保存</SaveButton>
+              teacher: teacher,
+            };
+            return tableValue;
+          });
+          setOpen(false);
+        }}
+      >
+        保存
+      </SaveButton>
       <HeadBar />
 
-      <InputContainer htmlFor={'subject-input'}>
+      <InputContainer htmlFor={"subject-input"}>
         <i />
         <input
-          id={'subject-input'}
+          id={"subject-input"}
           value={subject}
-          onChange={e => setSubject(e.target.value)}
-          placeholder={'科目'} />
+          onChange={(e) => setSubject(e.target.value)}
+          placeholder={"科目"}
+        />
       </InputContainer>
 
-      <InputContainer htmlFor={'teacher-input'}>
+      <InputContainer htmlFor={"teacher-input"}>
         <i />
         <input
-          id={'teacher-input'}
+          id={"teacher-input"}
           value={teacher}
-          onChange={e => setTeacher(e.target.value)}
-          placeholder={'教員名'} />
+          onChange={(e) => setTeacher(e.target.value)}
+          placeholder={"教員名"}
+        />
       </InputContainer>
 
       <DescriptionTextArea
         value={description}
-        onChange={e => setDescription(e.target.value)}
-        placeholder={'この科目の教室の場所・担当教員のメアド・評価基準などをメモするためのスペースです！'}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder={
+          "この科目の教室の場所・担当教員のメアド・評価基準などをメモするためのスペースです！"
+        }
       />
-
     </FormContainer>
-  )
-}
+  );
+};

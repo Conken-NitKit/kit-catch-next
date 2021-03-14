@@ -1,0 +1,1 @@
+export { SettingsCell } from "./SettingsCell";

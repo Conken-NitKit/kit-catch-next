@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import ApproachText from "../ApproachText";
+import { ApproachText } from "../ApproachText";
 
 const ApproachViewDiv = styled.div`
   position: relative;
@@ -28,7 +27,7 @@ const ApproachContainer = styled.div`
   margin-bottom: 16px;
 `;
 
-export default function ApproachView() {
+export const ApproachView = () => {
   return (
     <ApproachViewDiv>
       <ApproachContainer>
@@ -38,5 +37,3 @@ export default function ApproachView() {
     </ApproachViewDiv>
   );
 }
-
-
