@@ -7,27 +7,26 @@ const NavigationContainer = styled.div`
   bottom: 0;
   width: 100vw;
   @media screen and (min-width: 768px){
-    width: 15%;
-    border-right: solid lightgray 3px;
     position: absolute;
     top: 0px;
+    width: 15%;
+    border-right: solid lightgray 3px;
     border-bottom: solid lightgray 3px;
     }
   height: 64px;
   display: table;
   table-layout: fixed;
-  border-top: solid lightgray 0.5px;
+  border-top: solid lightgray 3px;
   background-color: white;
   z-index: 1;
 `;
 
 const NavigationItem = styled.div`
 @media screen and (min-width: 768px){
-    position: relative;
     display: flex;
-    margin-left: 20px;
-    margin-top: 15px;
     border-bottom: solid lightgray 3px;
+    margin: 0 auto;
+    padding: 5px;
     :last-child{
       border-bottom: none;
     }
@@ -48,7 +47,7 @@ const NavigationImage = styled.img`
   width: 28px;
   @media screen and (min-width: 768px){
     position: static;
-    top: 20px;
+    margin-left: 28px;
 }
 `;
 
@@ -58,10 +57,9 @@ const NavigationText = styled.p<{ selected: boolean }>`
   color: ${({ selected }) => selected ? '#444' : '#888'};
   font-size: 9px;
   @media screen and (min-width: 768px){
-    position: relative;
+    bottom: 50%;
     left: 50px;
-    font-size: 1.7vw;
-    bottom: 10px;
+    font-size: 2vw;
 }
   font-weight: ${({ selected }) => selected ? 'bolder' : 'normal'};
   margin: 0;
