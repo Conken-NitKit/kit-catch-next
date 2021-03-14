@@ -67,6 +67,19 @@ const NavigationText = styled.p<{ selected: boolean }>`
   margin: 0;
 `;
 
+const Line = styled.div`
+display: none;
+  @media screen and (min-width: 768px){
+    display: block;
+    width: 15%;
+    height: 60%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    border-right: solid lightgray 3px;
+}
+`;
+
 interface Props {
   page: string;
 }
@@ -119,6 +132,7 @@ export default function NavigationBar({ page }: Props) {
           </a>
         </NavigationItem>
       </NavigationContainer>
+      <Line></Line>
     </>
   )
 }
