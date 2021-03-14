@@ -4,3 +4,10 @@ export interface IUser {
   displayName: string;    // ユーザーネーム
   email: string;          // メールアドレス
 }
+
+export const defaultUserInfo: IUser = {
+  uid: "",
+  classId: "",
+  displayName: "",
+  email: ""
+}
