@@ -34,6 +34,8 @@ const NavigationItem = styled.div`
   display: table-cell;
   vertical-align: middle;
   a {
+    position: relative;
+    top: 20px;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
@@ -129,6 +131,7 @@ export default function NavigationBar({ page }: Props) {
             <NavigationText selected={page === "設定"}>設定</NavigationText>
           </a>
         </NavigationItem>
+
       </NavigationContainer>
       <Line></Line>
     </>

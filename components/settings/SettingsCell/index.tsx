@@ -39,6 +39,9 @@ const TableText = styled.p`
   margin: 0 0 0 16px;
   font-size: 11px;
   color: #555;
+  @media screen and (min-width: 768px){
+    font-size: 14.5px;
+    }
 `;
 
 const ToggleSwitch = styled.div<{ isChecked: boolean }>`
