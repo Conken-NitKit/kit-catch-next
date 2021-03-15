@@ -32,7 +32,7 @@ export default function Table() {
                 setTeacher={setTeacher}
                 setOpen={setOpen}
             />
-            <NavigationBar page={"時間割"} />
+            <NavigationBar page={"時間割"} height={90} />
             <TableForm
                 day={day}
                 time={time}

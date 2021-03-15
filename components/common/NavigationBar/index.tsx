@@ -7,7 +7,7 @@ const NavigationContainer = styled.div`
   bottom: 0;
   width: 100vw;
   @media screen and (min-width: 768px){
-    position: absolute;
+    position: fixed;
     top: 0px;
     width: 15%;
     border-right: solid lightgray 3px;
@@ -67,24 +67,26 @@ const NavigationText = styled.p<{ selected: boolean }>`
   margin: 0;
 `;
 
-const Line = styled.div`
+const Line = styled.div<{ height: number }>`
 display: none;
   @media screen and (min-width: 768px){
     display: block;
     width: 15%;
-    height: 60%;
+    height: ${(props) => props.height}%;
     position: absolute;
     top: 40%;
     left: 0;
     border-right: solid lightgray 3px;
+    border-bottom: solid lightgray 3px;
 }
 `;
 
 interface Props {
   page: string;
+  height: number;
 }
 
-export default function NavigationBar({ page }: Props) {
+export default function NavigationBar({ page, height }: Props) {
   return (
     <>
       <NavigationContainer>
@@ -133,7 +135,7 @@ export default function NavigationBar({ page }: Props) {
         </NavigationItem>
 
       </NavigationContainer>
-      <Line></Line>
+      <Line height={height}></Line>
     </>
   )
 }

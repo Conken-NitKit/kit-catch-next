@@ -10,7 +10,7 @@ export default function Landing() {
             <Header page={"LINE連携"} />
             <LineKey />
             <UsageView left={8} />
-            <NavigationBar page={"LINE連携"} />
+            <NavigationBar page={"LINE連携"} height={270} />
         </>
     )
 }
