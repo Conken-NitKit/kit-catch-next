@@ -108,8 +108,8 @@ export const ClassRadio = () => {
       email.length > 0 &&
       password.length > 0
     ) {
-      const className = String(grade) + String(course);
-      // createUser(name, className, email, password, setErrorMessage);
+      const className = `${String(grade)}-${String(course)}`;
+      createUser(name, className, email, password, setErrorMessage);
     }
   };
   return (

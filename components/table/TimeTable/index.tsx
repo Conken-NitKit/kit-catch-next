@@ -1,3 +1,4 @@
+import { ITimeTable } from "models/TimeTable";
 import styled from "styled-components";
 
 const Table = styled.table`
@@ -57,31 +58,10 @@ const Annotation = styled.p`
 `;
 
 interface Props {
-  tableValue: {
-    [key: string]: { subject: string; description: string; teacher: string }[];
-    monday: { subject: string; description: string; teacher: string }[];
-    tuesday: { subject: string; description: string; teacher: string }[];
-    wednesday: { subject: string; description: string; teacher: string }[];
-    thursday: { subject: string; description: string; teacher: string }[];
-    friday: { subject: string; description: string; teacher: string }[];
-  } | null;
-  setDay: (arg: string) => void;
-  setTime: (arg: number) => void;
-  setSubject: (arg: string) => void;
-  setDescription: (arg: string) => void;
-  setTeacher: (arg: string) => void;
-  setOpen: (arg: boolean) => void;
+  tableValue: ITimeTable;
 }
 
-export const TimeTable = ({
-  tableValue,
-  setDay,
-  setTime,
-  setSubject,
-  setDescription,
-  setTeacher,
-  setOpen,
-}: Props) => {
+export const TimeTable = ({ tableValue }: Props) => {
   return (
     <>
       <Table>
@@ -96,30 +76,20 @@ export const TimeTable = ({
         </thead>
         <tbody>
           {tableValue &&
-            ["monday", "tuesday", "wednesday", "thursday", "friday"].map(
-              (key) => (
-                <th key={key}>
-                  {tableValue &&
-                    tableValue[key].map((cell, j) => (
-                      <tr
-                        key={key + j.toString()}
-                        onClick={() => {
-                          setOpen(true);
-                          setDay(key);
-                          setTime(j);
-                          setSubject(cell.subject);
-                          setDescription(cell.description);
-                          setTeacher(cell.teacher);
-                        }}
-                      >
-                        {cell.subject}
-                        <br></br>
-                        {cell.teacher}
-                      </tr>
-                    ))}
-                </th>
-              )
-            )}
+            Object.entries(tableValue).map((column) => (
+              <th key={column[0]}>
+                {console.log(column)}
+                {Array.isArray(column[1]) &&
+                  column[1].map(
+                    (subjectName, j) =>
+                      typeof subjectName === "string" && (
+                        <tr key={column[0] + j.toString()} onClick={() => {}}>
+                          {subjectName}
+                        </tr>
+                      )
+                  )}
+              </th>
+            ))}
         </tbody>
       </Table>
       <Annotation>
@@ -127,4 +97,4 @@ export const TimeTable = ({
       </Annotation>
     </>
   );
-}
+};

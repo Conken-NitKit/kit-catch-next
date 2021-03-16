@@ -52,8 +52,8 @@ const KeyContainer = styled.div`
 `;
 
 export const LineKey = () => {
-  const [effectiveDate, setEffectiveDate] = useState<number | null>(null);
-  const [password, setPassword] = useState<string | null>(null);
+  const [effectiveDate, setEffectiveDate] = useState<number | undefined>(undefined);
+  const [password, setPassword] = useState<string | undefined>(undefined);
 
   return (
     <>
