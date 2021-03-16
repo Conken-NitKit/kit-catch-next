@@ -85,10 +85,10 @@ export const Usage = ({ left }: Props) => {
               step<StepNum>1</StepNum>
             </StepText>
             LINE Bot を友達に登録！
-            <LineContainer>
-              <LineButton />
-            </LineContainer>
           </NormalText>
+          <LineContainer>
+            <LineButton />
+          </LineContainer>
         </div>
         <div>
           <UsageImage src={"/usage2-min.jpg"} alt={""} />

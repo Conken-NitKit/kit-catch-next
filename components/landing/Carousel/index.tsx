@@ -45,10 +45,10 @@ export const Carousel = ({ image_links }: Props) => {
         slidesToShow={1}
         slidesToScroll={1}
       >
-        {image_links.map((image_link) => (
-          <CarouselDiv src={image_link} />
+        {image_links.map((image_link, i) => (
+          <CarouselDiv key={`carousel/${i}`} src={image_link} />
         ))}
       </Slider>
     </Wrapper>
   );
-}
+};

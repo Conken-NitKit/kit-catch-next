@@ -1,6 +1,6 @@
 import Router from "next/router";
-import { auth, db } from "utils/firebase";
 import { defaultUserInfo } from "models/User";
+import { auth, db } from "utils/firebase";
 
 export const signIn = async (
   email: string,

@@ -19,7 +19,7 @@ const CreateTaskContainer = styled.div`
   }
 `;
 
-const CreateTaskText = styled.p`
+const CreateTaskText = styled.div`
   text-align: center;
   font-size: 18px;
   letter-spacing: 2px;

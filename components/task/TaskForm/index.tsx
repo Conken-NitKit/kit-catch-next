@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { generateUuid } from "utils/generateUuid";
 
@@ -187,35 +188,15 @@ export const TaskForm = ({
   tasks,
   setTasks,
 }: Props) => {
-  if (id === "") setId(generateUuid());
+  useEffect(() => {
+    id === "" && setId(generateUuid());
+  }, [id, setId]);
+
   return (
     <FormContainer isOpen={isOpen}>
       <CloseIcon onClick={() => setOpen(false)} />
       <HeaderTitle>課題</HeaderTitle>
-      <SaveButton
-        onClick={() => {
-          console.log([id, name, subject, deadline, description]);
-          setTasks(() => {
-            if (!tasks) return tasks;
-            tasks.push({
-              id: id,
-              name: name,
-              subject: subject,
-              deadline: deadline,
-              description: description,
-            });
-            const taskValue = tasks
-              .reverse()
-              .filter(
-                (elm, i, self) => self.findIndex((e) => e.id === elm.id) === i
-              );
-            return taskValue;
-          });
-          setOpen(false);
-        }}
-      >
-        保存
-      </SaveButton>
+      <SaveButton onClick={() => {}}>保存</SaveButton>
       <HeadBar />
 
       <InputContainer

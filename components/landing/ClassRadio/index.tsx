@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { createUser } from "utils/user";
 
 const FormContainer = styled.div`
   display: flex;
@@ -94,7 +95,23 @@ const SubmitButton = styled.button<{ submittable: boolean }>`
 export const ClassRadio = () => {
   const [grade, setGrade] = useState<number>(-1);
   const [course, setCourse] = useState<number>(-1);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const submit = () => {
+    if (
+      grade !== -1 &&
+      course !== -1 &&
+      name.length > 0 &&
+      email.length > 0 &&
+      password.length > 0
+    ) {
+      const className = String(grade) + String(course);
+      // createUser(name, className, email, password, setErrorMessage);
+    }
+  };
   return (
     <FormContainer>
       <ClassContainer>
@@ -134,16 +151,24 @@ export const ClassRadio = () => {
       </ClassContainer>
 
       <PasswordInput
+        type={"text"}
+        placeholder={"ユーザーネーム"}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <PasswordInput
+        type={"email"}
+        placeholder={"mail@apps.kct.ac.jp"}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <PasswordInput
         type={"password"}
         placeholder={"パスワード"}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <p>{errorMessage}</p>
       <SubmitButton
         submittable={grade !== -1 && course !== -1 && password.length > 0}
-        onClick={() => {
-          if (grade !== -1 && course !== -1 && password.length > 0)
-            window.location.href = `/table`;
-        }}
+        onClick={submit}
       >
         サインイン
       </SubmitButton>

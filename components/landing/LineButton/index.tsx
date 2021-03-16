@@ -21,7 +21,7 @@ const LineBtn = styled.button`
     vertical-align: top;
     display: inline-block;
     position: relative;
-    background: url(${`${process.env.PUBLIC_URL}/line.png`}) center;
+    background: url("/line.png") center;
     background-size: cover;
   }
 `;

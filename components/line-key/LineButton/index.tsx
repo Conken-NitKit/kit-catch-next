@@ -28,11 +28,9 @@ const LineBtn = styled.button`
 
 export const LineButton = () => {
   return (
-    <a href={"/"}>
       <LineBtn>
         <i />
-        <span>友達登録はこちら</span>
+        友達登録はこちら
       </LineBtn>
-    </a>
   );
 }
