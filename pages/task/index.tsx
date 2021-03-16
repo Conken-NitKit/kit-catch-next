@@ -66,7 +66,7 @@ export default function Landing() {
         )
       }
     </TaskContainer>
-    <NavigationBar page={"課題"} />
+    <NavigationBar page={"課題"} height={300} />
     <TaskForm
       isNew={isNew}
       id={id}
