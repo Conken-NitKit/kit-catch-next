@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
   z-index: 1;
 `;
 
-const HeaderText = styled.p`
+const HeaderText = styled.p<{ left: number }>`
   text-align: center;
   font-size: 19px;
   font-weight: bolder;
@@ -25,21 +25,23 @@ const HeaderText = styled.p`
     letter-spacing: 7px;
     position: relative;
     left: 8%;
+    left: ${(props) => props.left}%;
   }
 `;
 
 interface Props {
   page: string;
+  left: number;
 }
 
-export const Header = ({ page }: Props) => {
+export const Header = ({ page, left }: Props) => {
   return (
     <HeaderContainer
       onClick={() => {
         window.scroll({ top: 0, behavior: "smooth" });
       }}
     >
-      <HeaderText>{page}</HeaderText>
+      <HeaderText left={left}>{page}</HeaderText>
     </HeaderContainer>
   );
 };

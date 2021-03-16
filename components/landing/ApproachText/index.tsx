@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ClassRadio } from "components/landing/ClassRadio";
+import { ClassRadio } from "../ClassRadio";
 
 const ApproachTitle = styled.h1`
   width: 100%;

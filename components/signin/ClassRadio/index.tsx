@@ -4,13 +4,24 @@ import { createUser } from "../../../utils/user";
 
 const FormContainer = styled.div`
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 44px;
+  border: solid #808080 2px;
+  border-radius: 3px;
+  padding-top: 150px;
+  padding-bottom: 70px;
+  width: 70%;
+  background: url("/approach.jpg");
+  background-size: cover;
+  padding-bottom: 150px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    top: 10vw;
   }
 `;
 
@@ -20,8 +31,8 @@ const ClassContainer = styled.div`
   border-radius: 8px;
   background-color: white;
   @media screen and (min-width: 768px) {
-    width: 700px;
-    margin-bottom: 7px;
+    width: 900px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -33,10 +44,10 @@ const ClassItem = styled.div<{ selected: boolean }>`
   text-align: center;
   width: 36px;
   padding: 5px 8px;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 22px;
   letter-spacing: 1px;
-  color: ${({ selected }) => (selected ? "#fff" : "#555e64")};
+  color: ${({ selected }) => (selected ? "#fff" : "black")};
   background: ${({ selected }) => (selected ? "#4daaff" : "#fff")};
   transition: all 0.7s;
 
@@ -51,6 +62,9 @@ const ClassItem = styled.div<{ selected: boolean }>`
 `;
 
 const PasswordInput = styled.input`
+  &:first-of-type {
+    margin-top: 50px;
+  }
   width: 236px;
   font-size: 14px;
   line-height: 24px;
@@ -62,7 +76,7 @@ const PasswordInput = styled.input`
   letter-spacing: 2px;
   border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   &::placeholder {
     color: #abb2b7;
     letter-spacing: 1px;
@@ -113,6 +127,7 @@ export const ClassRadio = () => {
     }
   };
   return (
+
     <FormContainer>
       <ClassContainer>
         <ClassItem selected={grade === 1} onClick={() => setGrade(1)}>
@@ -173,5 +188,6 @@ export const ClassRadio = () => {
         サインイン
       </SubmitButton>
     </FormContainer>
+
   );
 };

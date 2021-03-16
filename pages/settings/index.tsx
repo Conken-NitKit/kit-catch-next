@@ -19,7 +19,7 @@ export default function Settings() {
           text={"お問い合わせ"}
           hasSwitch={false}
           isChecked={false}
-          setChecked={() => {}}
+          setChecked={() => { }}
           onClick={() => {
             window.open("https://twitter.com/kubo_programmer", "_blank");
           }}
@@ -28,9 +28,9 @@ export default function Settings() {
           text={"ログアウト"}
           hasSwitch={false}
           isChecked={false}
-          setChecked={() => {}}
+          setChecked={() => { }}
           onClick={() => {
-            window.location.href = "/landing";
+            window.location.href = "/signin";
           }}
         />
         <SettingsCell
@@ -40,7 +40,7 @@ export default function Settings() {
           setChecked={() => {
             setTableDaily(!onTableDaily);
           }}
-          onClick={() => {}}
+          onClick={() => { }}
         />
         <SettingsCell
           text={"翌日提出の課題の通知 (毎日18:00頃)"}
@@ -49,7 +49,7 @@ export default function Settings() {
           setChecked={() => {
             setTaskDaily(!onTaskDaily);
           }}
-          onClick={() => {}}
+          onClick={() => { }}
         />
         <SettingsCell
           text={"今週提出のの課題の通知 (日曜日 18:00頃)"}
@@ -58,7 +58,7 @@ export default function Settings() {
           setChecked={() => {
             setTaskWeek(!onTaskWeek);
           }}
-          onClick={() => {}}
+          onClick={() => { }}
         />
       </SettingsTable>
       <NavigationBar page={"設定"} height={60} />

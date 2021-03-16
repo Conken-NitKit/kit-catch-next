@@ -17,16 +17,16 @@ export default function Table() {
   const [timeTable, setTimeTable] = useState<ITimeTable | undefined>(undefined);
   const { user, setUser } = useContext(userContext);
 
-  useEffect(() => {
-    const { unSub } = fetchUserInfo(setUser);
-    
-    return () => {
-      unSub();
-    };
-  });
+  // useEffect(() => {
+  //   const { unSub } = fetchUserInfo(setUser);
+
+  //   return () => {
+  //     unSub();
+  //   };
+  // });
 
   useEffect(() => {
-    if(user.classId && !timeTable) {
+    if (user.classId && !timeTable) {
       fetchTable(user.classId, setTimeTable);
     }
   }, [user]);
