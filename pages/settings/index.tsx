@@ -74,7 +74,7 @@ export default function Settings() {
                     onClick={() => { window.location.href = '/landing' }}
                 />
             </SettingsTable>
-            <NavigationBar page={"設定"} />
+            <NavigationBar page={"設定"} height={60} />
         </>
     )
 }

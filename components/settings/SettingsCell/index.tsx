@@ -4,6 +4,8 @@ import styled from "styled-components";
 const TableCell = styled.div`
   width: 100vw;
   height: 42px;
+  position: relative;
+  bottom: 8px;
   border-top: solid #E4EFEF 1px;
   &:last-of-type {
     border-bottom: solid #E4EFEF 1px;
@@ -37,6 +39,9 @@ const TableText = styled.p`
   margin: 0 0 0 16px;
   font-size: 11px;
   color: #555;
+  @media screen and (min-width: 768px){
+    font-size: 14.5px;
+    }
 `;
 
 const ToggleSwitch = styled.div<{ isChecked: boolean }>`
