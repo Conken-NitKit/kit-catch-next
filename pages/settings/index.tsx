@@ -18,32 +18,18 @@ export default function Settings() {
             <Header page={"設定"} />
             <SettingsTable>
                 <SettingsCell
-                    text={'ご利用ガイド'}
-                    hasSwitch={false}
-                    isChecked={false}
-                    setChecked={() => { }}
-                    onClick={() => { }}
-                />
-                <SettingsCell
-                    text={'プライバシーポリシー'}
-                    hasSwitch={false}
-                    isChecked={false}
-                    setChecked={() => { }}
-                    onClick={() => { }}
-                />
-                <SettingsCell
-                    text={'利用規約'}
-                    hasSwitch={false}
-                    isChecked={false}
-                    setChecked={() => { }}
-                    onClick={() => { }}
-                />
-                <SettingsCell
                     text={'お問い合わせ'}
                     hasSwitch={false}
                     isChecked={false}
                     setChecked={() => { }}
                     onClick={() => { window.open('https://twitter.com/kubo_programmer', '_blank') }}
+                />
+                <SettingsCell
+                    text={'ログアウト'}
+                    hasSwitch={false}
+                    isChecked={false}
+                    setChecked={() => { }}
+                    onClick={() => { window.location.href = '/landing' }}
                 />
                 <SettingsCell
                     text={'翌日の授業時間割の通知 (毎日18:00頃)'}
@@ -65,13 +51,6 @@ export default function Settings() {
                     isChecked={onTaskWeek}
                     setChecked={() => { setTaskWeek(!onTaskWeek) }}
                     onClick={() => { }}
-                />
-                <SettingsCell
-                    text={'ログアウト'}
-                    hasSwitch={false}
-                    isChecked={false}
-                    setChecked={() => { }}
-                    onClick={() => { window.location.href = '/landing' }}
                 />
             </SettingsTable>
             <NavigationBar page={"設定"} height={60} />
