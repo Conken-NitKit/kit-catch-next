@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const KeyContainer = styled.div`
@@ -9,17 +9,17 @@ const KeyContainer = styled.div`
   padding: 24px 12px;
   margin: 72px 0;
   transform: translateX(-50%);
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.35);
-  border: solid 0.1px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+  border: solid 0.1px rgba(0, 0, 0, 0.15);
   color: #555;
   font-size: 14px;
   text-align: center;
   height: 200px;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     left: 58%;
     font-size: 25px;
     margin-bottom: 30px;
-    }
+  }
   p {
     margin: 12px 0;
     color: #555;
@@ -51,38 +51,47 @@ const KeyContainer = styled.div`
   }
 `;
 
-export default function LineKey() {
-
-  const [effectiveDate, setEffectiveDate] = useState<number | null>(null)
-  const [password, setPassword] = useState<string | null>(null)
+export const LineKey = () => {
+  const [effectiveDate, setEffectiveDate] = useState<number | undefined>(undefined);
+  const [password, setPassword] = useState<string | undefined>(undefined);
 
   return (
     <>
       <KeyContainer>
-        LINE連携用のワンタイムパスワード<br />
-      ({
-          effectiveDate &&
+        LINE連携用のワンタイムパスワード
+        <br />(
+        {effectiveDate &&
           (() => {
-            const date = new Date(effectiveDate)
-            return " 有効期限 : "
-              + date.getFullYear() + "/"
-              + ('0' + (date.getMonth() + 1)).slice(-2) + "/"
-              + ('0' + date.getDate()).slice(-2) + " "
-              + ('0' + date.getHours()).slice(-2) + ":"
-              + ('0' + date.getMinutes()).slice(-2) + " "
-          })()
-        })
-      <p>
+            const date = new Date(effectiveDate);
+            return (
+              " 有効期限 : " +
+              date.getFullYear() +
+              "/" +
+              ("0" + (date.getMonth() + 1)).slice(-2) +
+              "/" +
+              ("0" + date.getDate()).slice(-2) +
+              " " +
+              ("0" + date.getHours()).slice(-2) +
+              ":" +
+              ("0" + date.getMinutes()).slice(-2) +
+              " "
+            );
+          })()}
+        )
+        <p>
           <span>{password && password.slice(-6, -3)}</span>
           <span>{password && password.slice(-3)}</span>
         </p>
-        <button onClick={() => {
-          setEffectiveDate(() => {
-            return new Date(new Date().getTime() + 10 * 60 * 1000).getTime()
-          })
-        }}>ワンタイムパスワードを再発行する</button>
+        <button
+          onClick={() => {
+            setEffectiveDate(() => {
+              return new Date(new Date().getTime() + 10 * 60 * 1000).getTime();
+            });
+          }}
+        >
+          ワンタイムパスワードを再発行する
+        </button>
       </KeyContainer>
     </>
-  )
+  );
 }
-

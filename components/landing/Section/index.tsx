@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const SectionContainer = styled.div`
@@ -47,15 +46,12 @@ interface Props {
   description: string;
 }
 
-export default function Section({ title, subTitle, description }: Props) {
+export const Section = ({ title, subTitle, description }: Props) => {
   return (
     <SectionContainer>
       <ApproachSubTitle> {subTitle} </ApproachSubTitle>
       <SectionTitle> {title} </SectionTitle>
-      <ApproachDescription>
-        {description}
-      </ApproachDescription>
+      <ApproachDescription>{description}</ApproachDescription>
     </SectionContainer>
-  )
-}
-
+  );
+};

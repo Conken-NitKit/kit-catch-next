@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
@@ -32,7 +31,7 @@ interface Props {
   image_links: string[];
 }
 
-export default function Carousel({ image_links }: Props) {
+export const Carousel = ({ image_links }: Props) => {
   return (
     <Wrapper>
       <Slider
@@ -46,12 +45,10 @@ export default function Carousel({ image_links }: Props) {
         slidesToShow={1}
         slidesToScroll={1}
       >
-        {
-          image_links.map(image_link => <CarouselDiv src={image_link} />)
-        }
+        {image_links.map((image_link, i) => (
+          <CarouselDiv key={`carousel/${i}`} src={image_link} />
+        ))}
       </Slider>
     </Wrapper>
-    //#35b900
-  )
-}
-
+  );
+};

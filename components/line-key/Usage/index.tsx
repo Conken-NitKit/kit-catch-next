@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import Line from "../LineButton";
+import { LineButton } from "../LineButton";
 
 const NormalText = styled.p`
   position: relative;
@@ -8,8 +7,8 @@ const NormalText = styled.p`
   color: rgba(0, 0, 0, 0.85);
   font-size: 12px;
   font-weight: bold;
-  font-family: 'M PLUS 1p', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "M PLUS 1p", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   text-align: center;
 `;
 
@@ -18,7 +17,7 @@ const Container = styled.div<{ left: number }>`
   width: 80%;
   @media screen and (min-width: 768px) {
     width: 700px;
-    left:  ${(props) => props.left}%;
+    left: ${(props) => props.left}%;
   }
   top: 0;
   margin: 15px auto;
@@ -29,9 +28,9 @@ const Container = styled.div<{ left: number }>`
 const UsageContainer = styled(Container)`
   margin-top: 10px;
   padding-bottom: 60px;
-  @media screen and (min-width: 768px){
-      width: 80vw;
-    }
+  @media screen and (min-width: 768px) {
+    width: 80vw;
+  }
 `;
 
 const UsageImage = styled.img`
@@ -72,51 +71,62 @@ const LineContainer = styled.div`
 `;
 
 interface Props {
-  left: number
+  left: number;
 }
 
-export default function UsageView({ left }: Props) {
+export const Usage = ({ left }: Props) => {
   return (
     <>
       <UsageContainer left={left}>
         <div>
           <UsageImage src={"/usage1-min.jpg"} alt={""} />
           <NormalText>
-            <StepText>step<StepNum>1</StepNum></StepText>
+            <StepText>
+              step<StepNum>1</StepNum>
+            </StepText>
             LINE Bot を友達に登録！
-            <LineContainer>
-              <Line />
-            </LineContainer>
           </NormalText>
+          <LineContainer>
+            <LineButton />
+          </LineContainer>
         </div>
         <div>
           <UsageImage src={"/usage2-min.jpg"} alt={""} />
           <NormalText>
-            <StepText>step<StepNum>2</StepNum></StepText>
+            <StepText>
+              step<StepNum>2</StepNum>
+            </StepText>
             追加した LINE Bot を<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            グループに招待！
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; グループに招待！
           </NormalText>
         </div>
         <div>
           <UsageImage src={"/usage3-min.jpg"} alt={""} />
           <NormalText>
-            <StepText>step<StepNum>3</StepNum></StepText>
+            <StepText>
+              step<StepNum>3</StepNum>
+            </StepText>
             自分のクラスのパスワードで <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Webサイトにログイン！<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LINE連携からパスワードを取得！
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Webサイトにログイン！
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            LINE連携からパスワードを取得！
           </NormalText>
         </div>
         <div>
           <UsageImage src={"/usage4-min.jpg"} alt={""} />
           <NormalText>
-            <StepText>step<StepNum>4</StepNum></StepText>取得したワンタイムパスワードを<br />
+            <StepText>
+              step<StepNum>4</StepNum>
+            </StepText>
+            取得したワンタイムパスワードを
+            <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            LINEのグループして紐付け完了<br />
-
+            LINEのグループして紐付け完了
+            <br />
           </NormalText>
         </div>
       </UsageContainer>
     </>
-  )
-}
+  );
+};

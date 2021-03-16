@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import ClassRadio from "../ClassRadio";
+import { ClassRadio } from "components/landing/ClassRadio";
 
 const ApproachTitle = styled.h1`
   width: 100%;
@@ -20,16 +19,17 @@ const ApproachDescription = styled.p`
   -webkit-text-stroke: 0.25px white;
 `;
 
-export default function ApproachText() {
+export const ApproachText = () => {
   return (
     <>
       <ApproachTitle>Kit-Catch</ApproachTitle>
       <ApproachDescription>
         Kit-Catch(キット・キャッチ) は<br />
-    北九州高専の学生専用の<br />
-    「時間割＆課題」管理サービスです！
-  </ApproachDescription>
+        北九州高専の学生専用の
+        <br />
+        「時間割＆課題」管理サービスです！
+      </ApproachDescription>
       <ClassRadio />
     </>
-  )
+  );
 }

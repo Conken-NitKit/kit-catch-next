@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
@@ -33,12 +32,14 @@ interface Props {
   page: string;
 }
 
-export default function NavigationBar({ page }: Props) {
+export const Header = ({ page }: Props) => {
   return (
-    <HeaderContainer onClick={() => { window.scroll({ top: 0, behavior: 'smooth' }) }}>
-      <HeaderText>
-        {page}
-      </HeaderText>
+    <HeaderContainer
+      onClick={() => {
+        window.scroll({ top: 0, behavior: "smooth" });
+      }}
+    >
+      <HeaderText>{page}</HeaderText>
     </HeaderContainer>
-  )
-}
+  );
+};

@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import Header from "../../components/common/Header";
-import TaskItem from "../../components/task/Task";
-import NavigationBar from "../../components/common/NavigationBar";
-import TaskForm from "../../components/task/TaskForm";
-import CreateTaskButton from "../../components/task/CreateTaskButton";
+import { Header, NavigationBar } from "components/common";
+import { CreateTaskButton, TaskForm, TaskItem } from "components/task"
 
 const TaskContainer = styled.div`
   padding: 56px 0 64px;
@@ -69,7 +66,7 @@ export default function Landing() {
         )
       }
     </TaskContainer>
-    <NavigationBar page={"課題"} />
+    <NavigationBar page={"課題"} height={300} />
     <TaskForm
       isNew={isNew}
       id={id}

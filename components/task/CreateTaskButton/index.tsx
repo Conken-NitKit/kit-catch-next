@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const CreateTaskContainer = styled.div`
@@ -9,23 +8,23 @@ const CreateTaskContainer = styled.div`
   padding: 0 12px;
   transform: translateX(-50%);
   background-color: #00b833;
-  box-shadow: 2.5px 2.5px 3px rgba(0,0,0,0.35);
+  box-shadow: 2.5px 2.5px 3px rgba(0, 0, 0, 0.35);
   @media screen and (min-width: 768px) {
-  position: relative;
-  left: 58%;
+    position: relative;
+    left: 58%;
   }
-  &:active {    
-    transform: translate(-49.9%,1px);
-    box-shadow: 0.5px 0.5px 3px rgba(0,0,0,0.35);
+  &:active {
+    transform: translate(-49.9%, 1px);
+    box-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.35);
   }
 `;
 
-const CreateTaskText = styled.p`
+const CreateTaskText = styled.div`
   text-align: center;
   font-size: 18px;
   letter-spacing: 2px;
   padding: 10px 10px 10px 0;
-  color: #FFF;  
+  color: #fff;
   i {
     height: 28px;
     width: 28px;
@@ -42,7 +41,7 @@ interface Props {
   onClick: () => void;
 }
 
-export default function CreateTaskButton({ onClick }: Props) {
+export const CreateTaskButton = ({ onClick }: Props) => {
   return (
     <CreateTaskContainer onClick={onClick}>
       <CreateTaskText>
@@ -50,5 +49,5 @@ export default function CreateTaskButton({ onClick }: Props) {
         新しく課題を追加
       </CreateTaskText>
     </CreateTaskContainer>
-  )
-}
+  );
+};

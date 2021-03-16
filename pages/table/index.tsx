@@ -1,52 +1,55 @@
-import React, { useState } from "react";
-import Header from "../../components/common/Header";
-import TimeTable from "../../components/table/TimeTable";
-import NavigationBar from "../../components/common/NavigationBar";
-import TableForm from "../../components/table/TableForm";
+import { useContext, useEffect, useState } from "react";
+import { Header, NavigationBar } from "components/common";
+import { TimeTable } from "components/table";
+import { userContext } from "contexts/userContext";
+import { DEFAULT_TIME_TABLE, ITimeTable } from "models/TimeTable";
+import { fetchUserInfo } from "utils/user/fetchUserInfo";
+import { fetchTable } from "utils/table";
+import { stringify } from "querystring";
 
 export default function Table() {
+  const [teacher, setTeacher] = useState<string>("");
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [day, setDay] = useState<string>("");
+  const [time, setTime] = useState<number>(-1);
+  const [subject, setSubject] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [timeTable, setTimeTable] = useState<ITimeTable | undefined>(undefined);
+  const { user, setUser } = useContext(userContext);
 
-    const [teacher, setTeacher] = useState<string>("")
-    const [isOpen, setOpen] = useState<boolean>(false)
-    const [day, setDay] = useState<string>("")
-    const [time, setTime] = useState<number>(-1)
-    const [subject, setSubject] = useState<string>("")
-    const [description, setDescription] = useState<string>("")
-    const [tableValue, setTableValue] = useState<{
-        monday: { subject: string, description: string, teacher: string }[],
-        tuesday: { subject: string, description: string, teacher: string }[],
-        wednesday: { subject: string, description: string, teacher: string }[],
-        thursday: { subject: string, description: string, teacher: string }[],
-        friday: { subject: string, description: string, teacher: string }[]
-    } | null>(null)
+  useEffect(() => {
+    const { unSub } = fetchUserInfo(setUser);
+    
+    return () => {
+      unSub();
+    };
+  });
 
-    return (
-        <>
-            <Header page={"時間割"} />
-            <TimeTable
-                tableValue={tableValue}
-                setDay={setDay}
-                setTime={setTime}
-                setSubject={setSubject}
-                setDescription={setDescription}
-                setTeacher={setTeacher}
-                setOpen={setOpen}
-            />
-            <NavigationBar page={"時間割"} />
-            <TableForm
-                day={day}
-                time={time}
-                subject={subject}
-                setSubject={setSubject}
-                description={description}
-                setDescription={setDescription}
-                teacher={teacher}
-                setTeacher={setTeacher}
-                isOpen={isOpen}
-                setOpen={setOpen}
-                tableValue={tableValue}
-                setTableValue={setTableValue}
-            />
-        </>
-    )
+  useEffect(() => {
+    if(user.classId && !timeTable) {
+      fetchTable(user.classId, setTimeTable);
+    }
+  }, [user]);
+
+  return (
+    <>
+      <Header page={"時間割"} />
+      <TimeTable tableValue={timeTable ?? DEFAULT_TIME_TABLE} />
+      <NavigationBar page={"時間割"} height={90} />
+      {/* <TableForm
+        day={day}
+        time={time}
+        subject={subject}
+        setSubject={setSubject}
+        description={description}
+        setDescription={setDescription}
+        teacher={teacher}
+        setTeacher={setTeacher}
+        isOpen={isOpen}
+        setOpen={setOpen}
+        tableValue={tableValue}
+        setTableValue={setTableValue}
+      /> */}
+    </>
+  );
 }
