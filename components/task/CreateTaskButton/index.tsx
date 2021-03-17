@@ -11,7 +11,8 @@ const CreateTaskContainer = styled.div`
   box-shadow: 2.5px 2.5px 3px rgba(0, 0, 0, 0.35);
   @media screen and (min-width: 768px) {
     position: relative;
-    left: 58%;
+    left: 58vw;
+    top: 1vw;
   }
   &:active {
     transform: translate(-49.9%, 1px);

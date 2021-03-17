@@ -1,16 +1,27 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { createUser } from "../../../utils/user";
+import { signIn } from "../../../utils/user/signIn";
 
 const FormContainer = styled.div`
   display: flex;
+  margin: 0 auto;
+  position: relative;
+  top: 2vw;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 44px;
+  margin-top: 30vw;
+  border: solid #808080 2px;
+  border-radius: 3px;
+  padding-top: 10vw;
+  width: 80vw;
+  background: url("/approach.jpg");
+  background-size: cover;
+  padding-bottom: 150px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 7vw;
   }
 `;
 
@@ -20,8 +31,8 @@ const ClassContainer = styled.div`
   border-radius: 8px;
   background-color: white;
   @media screen and (min-width: 768px) {
-    width: 700px;
-    margin-bottom: 7px;
+    width: 60vw;
+    margin-bottom: 20px;
   }
 `;
 
@@ -33,10 +44,10 @@ const ClassItem = styled.div<{ selected: boolean }>`
   text-align: center;
   width: 36px;
   padding: 5px 8px;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 22px;
   letter-spacing: 1px;
-  color: ${({ selected }) => (selected ? "#fff" : "#555e64")};
+  color: ${({ selected }) => (selected ? "#fff" : "black")};
   background: ${({ selected }) => (selected ? "#4daaff" : "#fff")};
   transition: all 0.7s;
 
@@ -51,6 +62,9 @@ const ClassItem = styled.div<{ selected: boolean }>`
 `;
 
 const PasswordInput = styled.input`
+  &:first-of-type {
+    margin-top: 50px;
+  }
   width: 236px;
   font-size: 14px;
   line-height: 24px;
@@ -62,7 +76,7 @@ const PasswordInput = styled.input`
   letter-spacing: 2px;
   border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   &::placeholder {
     color: #abb2b7;
     letter-spacing: 1px;
@@ -93,68 +107,55 @@ const SubmitButton = styled.button<{ submittable: boolean }>`
 `;
 
 export const ClassRadio = () => {
-  const [grade, setGrade] = useState<number>(-1);
+  const [classId, setclassId] = useState<number>(-1);
   const [course, setCourse] = useState<number>(-1);
-  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const submit = () => {
-    if (
-      grade !== -1 &&
-      course !== -1 &&
-      name.length > 0 &&
-      email.length > 0 &&
-      password.length > 0
-    ) {
-      const className = `${String(grade)}-${String(course)}`;
-      createUser(name, className, email, password, setErrorMessage);
-    }
+    signIn(email, password, setErrorMessage);
   };
+
   return (
+
     <FormContainer>
       <ClassContainer>
-        <ClassItem selected={grade === 1} onClick={() => setGrade(1)}>
+        <ClassItem selected={classId === 1} onClick={() => setclassId(1)}>
           1年
         </ClassItem>
-        <ClassItem selected={grade === 2} onClick={() => setGrade(2)}>
+        <ClassItem selected={classId === 2} onClick={() => setclassId(2)}>
           2年
         </ClassItem>
-        <ClassItem selected={grade === 3} onClick={() => setGrade(3)}>
+        <ClassItem selected={classId === 3} onClick={() => setclassId(3)}>
           3年
         </ClassItem>
-        <ClassItem selected={grade === 4} onClick={() => setGrade(4)}>
+        <ClassItem selected={classId === 4} onClick={() => setclassId(4)}>
           4年
         </ClassItem>
-        <ClassItem selected={grade === 5} onClick={() => setGrade(5)}>
+        <ClassItem selected={classId === 5} onClick={() => setclassId(5)}>
           5年
         </ClassItem>
       </ClassContainer>
 
       <ClassContainer>
         <ClassItem selected={course === 1} onClick={() => setCourse(1)}>
-          {grade < 3 ? "1組" : "機械"}
+          {classId < 3 ? "1組" : "機械"}
         </ClassItem>
         <ClassItem selected={course === 2} onClick={() => setCourse(2)}>
-          {grade < 3 ? "2組" : "知能"}
+          {classId < 3 ? "2組" : "知能"}
         </ClassItem>
         <ClassItem selected={course === 3} onClick={() => setCourse(3)}>
-          {grade < 3 ? "3組" : "電気"}
+          {classId < 3 ? "3組" : "電気"}
         </ClassItem>
         <ClassItem selected={course === 4} onClick={() => setCourse(4)}>
-          {grade < 3 ? "4組" : "情報"}
+          {classId < 3 ? "4組" : "情報"}
         </ClassItem>
         <ClassItem selected={course === 5} onClick={() => setCourse(5)}>
-          {grade < 3 ? "5組" : "化学"}
+          {classId < 3 ? "5組" : "化学"}
         </ClassItem>
       </ClassContainer>
 
-      <PasswordInput
-        type={"text"}
-        placeholder={"ユーザーネーム"}
-        onChange={(e) => setName(e.target.value)}
-      />
       <PasswordInput
         type={"email"}
         placeholder={"mail@apps.kct.ac.jp"}
@@ -167,11 +168,12 @@ export const ClassRadio = () => {
       />
       <p>{errorMessage}</p>
       <SubmitButton
-        submittable={grade !== -1 && course !== -1 && password.length > 0}
+        submittable={classId !== -1 && course !== -1 && password.length > 0}
         onClick={submit}
       >
-        サインアップ
+        サインイン
       </SubmitButton>
     </FormContainer>
+
   );
 };

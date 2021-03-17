@@ -23,7 +23,7 @@ export const createUser = async (
           });
       }
     });
-    Router.push("/table");
+    Router.push("/settings");
   } catch (error) {
     console.log(error.message);
     setSignUpError(error.message);

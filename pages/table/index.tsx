@@ -17,6 +17,7 @@ export default function Table() {
   const [timeTable, setTimeTable] = useState<ITimeTable | undefined>(undefined);
   const { user, setUser } = useContext(userContext);
 
+
   useEffect(() => {
     const unSub = auth.onAuthStateChanged(async (fetchedUser) => {
       if (
