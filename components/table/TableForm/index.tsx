@@ -1,3 +1,5 @@
+import { ITimeTable } from "models/TimeTable";
+import { useState } from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.div<{ isOpen: boolean }>`
@@ -114,50 +116,18 @@ const DescriptionTextArea = styled.textarea`
 interface Props {
   day: string;
   time: number;
-  teacher: string;
-  setTeacher: (arg: string) => void;
-  subject: string;
-  setSubject: (arg: string) => void;
-  description: string;
-  setDescription: (arg: string) => void;
   isOpen: boolean;
-  setOpen: (arg: boolean) => void;
-  tableValue: {
-    [key: string]: { subject: string; description: string; teacher: string }[];
-    monday: { subject: string; description: string; teacher: string }[];
-    tuesday: { subject: string; description: string; teacher: string }[];
-    wednesday: { subject: string; description: string; teacher: string }[];
-    thursday: { subject: string; description: string; teacher: string }[];
-    friday: { subject: string; description: string; teacher: string }[];
-  } | null;
-  setTableValue: React.Dispatch<
-    React.SetStateAction<{
-      monday: { subject: string; description: string; teacher: string }[];
-      tuesday: { subject: string; description: string; teacher: string }[];
-      wednesday: { subject: string; description: string; teacher: string }[];
-      thursday: { subject: string; description: string; teacher: string }[];
-      friday: { subject: string; description: string; teacher: string }[];
-    } | null>
-  >;
+  setIsOpen: (arg: boolean) => void;
 }
 
-export const TableForm = ({
-  day,
-  time,
-  teacher,
-  setTeacher,
-  subject,
-  setSubject,
-  description,
-  setDescription,
-  isOpen,
-  setOpen,
-  tableValue,
-  setTableValue,
-}: Props) => {
+export const TableForm = ({ day, time, isOpen, setIsOpen }: Props) => {
+  const [subject, setSubject] = useState("");
+  const [teacher, setTeacher] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <FormContainer isOpen={isOpen}>
-      <CloseIcon onClick={() => setOpen(false)} />
+      <CloseIcon onClick={() => setIsOpen(false)} />
       <HeaderTitle>
         {day === "monday"
           ? "月"
@@ -172,23 +142,7 @@ export const TableForm = ({
           : ""}
         曜{time + 1}限
       </HeaderTitle>
-      <SaveButton
-        onClick={() => {
-          console.log(day, time, subject, description, teacher);
-          setTableValue(() => {
-            if (!tableValue) return tableValue;
-            tableValue[day][time] = {
-              subject: subject,
-              description: description,
-              teacher: teacher,
-            };
-            return tableValue;
-          });
-          setOpen(false);
-        }}
-      >
-        保存
-      </SaveButton>
+      <SaveButton>保存</SaveButton>
       <HeadBar />
 
       <InputContainer htmlFor={"subject-input"}>

@@ -59,9 +59,10 @@ const Annotation = styled.p`
 
 interface Props {
   tableValue: ITimeTable;
+  open: (day: string, time: number, title: string) => void;
 }
 
-export const TimeTable = ({ tableValue }: Props) => {
+export const TimeTable = ({ tableValue, open }: Props) => {
   return (
     <>
       <Table>
@@ -75,21 +76,56 @@ export const TimeTable = ({ tableValue }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {tableValue &&
-            Object.entries(tableValue).map((column) => (
-              <th key={column[0]}>
-                {console.log(column)}
-                {Array.isArray(column[1]) &&
-                  column[1].map(
-                    (subjectName, j) =>
-                      typeof subjectName === "string" && (
-                        <tr key={column[0] + j.toString()} onClick={() => {}}>
-                          {subjectName}
-                        </tr>
-                      )
-                  )}
-              </th>
+          <th>
+            {tableValue.monday.map((subjectName, index) => (
+              <tr
+                key={"monday" + index.toString()}
+                onClick={() => open("monday", index, subjectName)}
+              >
+                {subjectName}
+              </tr>
             ))}
+          </th>
+          <th>
+            {tableValue.tuesday.map((subjectName, index) => (
+              <tr
+                key={"tuesday" + index.toString()}
+                onClick={() => open("tuesday", index, subjectName)}
+              >
+                {subjectName}
+              </tr>
+            ))}
+          </th>
+          <th>
+            {tableValue.wednesday.map((subjectName, index) => (
+              <tr
+                key={"wednesday" + index.toString()}
+                onClick={() => open("wednesday", index, subjectName)}
+              >
+                {subjectName}
+              </tr>
+            ))}
+          </th>
+          <th>
+            {tableValue.thursday.map((subjectName, index) => (
+              <tr
+                key={"thursday" + index.toString()}
+                onClick={() => open("thursday", index, subjectName)}
+              >
+                {subjectName}
+              </tr>
+            ))}
+          </th>
+          <th>
+            {tableValue.friday.map((subjectName, index) => (
+              <tr
+                key={"friday" + index.toString()}
+                onClick={() => open("friday", index, subjectName)}
+              >
+                {subjectName}
+              </tr>
+            ))}
+          </th>
         </tbody>
       </Table>
       <Annotation>
