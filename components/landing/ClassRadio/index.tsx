@@ -170,7 +170,7 @@ export const ClassRadio = () => {
         submittable={grade !== -1 && course !== -1 && password.length > 0}
         onClick={submit}
       >
-        サインイン
+        サインアップ
       </SubmitButton>
     </FormContainer>
   );

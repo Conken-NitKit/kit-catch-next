@@ -20,7 +20,7 @@ export const signIn = async (
           });
       }
     });
-    Router.push("/");
+    Router.push("settings");
   } catch (error) {
     console.log(error.message);
     setSignInError(error.message);

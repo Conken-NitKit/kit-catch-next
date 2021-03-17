@@ -6,9 +6,20 @@ const ApproachViewDiv = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 590px;
+  height: 680px;
   background: url("/approach.jpg");
   background-size: cover;
+`;
+
+const ApproachButton = styled.div`
+color: lightblue;
+font-size: 25px;
+position: absolute;
+right: 2vw;
+top: 0.5vw;
+&:hover {
+  cursor: pointer;
+}
 `;
 
 const ApproachIcon = styled.div`
@@ -30,6 +41,7 @@ const ApproachContainer = styled.div`
 export const ApproachView = () => {
   return (
     <ApproachViewDiv>
+      <ApproachButton onClick={() => { window.location.href = "/signin"; }}>サインイン</ApproachButton>
       <ApproachContainer>
         <ApproachIcon />
         <ApproachText />
