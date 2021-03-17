@@ -8,6 +8,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "firebase": "^8.3.0",
     "next": "latest",
     "react": "^17.0.1",

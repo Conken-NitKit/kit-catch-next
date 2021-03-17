@@ -45,10 +45,10 @@ export default function Landing() {
       />
       <Carousel
         image_links={[
-          "/benefit01-min.jpg",
-          "/benefit02-min.jpg",
-          "/benefit03-min.jpg",
-          "/benefit04-min.jpg",
+          "/image1.jpg",
+          "/image2.jpg",
+          "/image3.jpg",
+          "/image4.jpg",
         ]}
       />
       <SectionBorder />
