@@ -20,7 +20,7 @@ const HeaderText = styled.p<{ left: number }>`
   margin: 12px;
   color: #666;
   @media screen and (min-width: 768px) {
-    height: 40px;
+    height: 45px;
     font-size: 2.5vw;
     letter-spacing: 7px;
     position: relative;

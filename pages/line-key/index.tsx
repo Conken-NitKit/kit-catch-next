@@ -4,10 +4,10 @@ import { LineKey, Usage } from "components/line-key";
 export default function Landing() {
   return (
     <>
-      <Header page={"LINE連携"} />
+      <Header page={"LINE連携"} left={8} />
       <LineKey />
       <Usage left={8} />
-      <NavigationBar page={"LINE連携"} height={270} />
+      <NavigationBar page={"LINE連携"} />
     </>
   );
 }

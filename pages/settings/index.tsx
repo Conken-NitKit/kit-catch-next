@@ -61,7 +61,7 @@ export default function Settings() {
           onClick={() => { }}
         />
       </SettingsTable>
-      <NavigationBar page={"設定"} height={60} />
+      <NavigationBar page={"設定"} />
     </>
   );
 }

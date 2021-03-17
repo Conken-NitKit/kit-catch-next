@@ -27,7 +27,7 @@ export default function Landing() {
   const [tasks, setTasks] = useState<{ id: string, name: string, subject: string, deadline: string, description: string }[] | null>(null)
 
   return <>
-    <Header page={"課題"} />
+    <Header page={"課題"} left={8} />
     <TaskContainer>
       <CreateTaskButton
         onClick={() => {
@@ -66,7 +66,7 @@ export default function Landing() {
         )
       }
     </TaskContainer>
-    <NavigationBar page={"課題"} height={300} />
+    <NavigationBar page={"課題"} />
     <TaskForm
       isNew={isNew}
       id={id}

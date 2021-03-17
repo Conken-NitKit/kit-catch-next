@@ -33,8 +33,10 @@ const NavigationItem = styled.div`
   display: table-cell;
   vertical-align: middle;
   a {
+    @media screen and (min-width: 768px) {
     position: relative;
     top: 20px;
+    }
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
@@ -66,13 +68,13 @@ const NavigationText = styled.p<{ selected: boolean }>`
   margin: 0;
 `;
 
-const Line = styled.div<{ height: number }>`
+const Line = styled.div`
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
-    width: 15%;
-    height: ${(props) => props.height}%;
-    position: absolute;
+    width: 15vw;
+    height: 100vw;
+    position: fixed;
     top: 40%;
     left: 0;
     border-right: solid lightgray 3px;
@@ -82,10 +84,9 @@ const Line = styled.div<{ height: number }>`
 
 interface Props {
   page: string;
-  height: number;
 }
 
-export const NavigationBar = ({ page, height }: Props) => {
+export const NavigationBar = ({ page }: Props) => {
   return (
     <>
       <NavigationContainer>
@@ -147,7 +148,7 @@ export const NavigationBar = ({ page, height }: Props) => {
           </a>
         </NavigationItem>
       </NavigationContainer>
-      <Line height={height}></Line>
+      <Line> </Line>
     </>
   );
 };

@@ -16,7 +16,8 @@ const KeyContainer = styled.div`
   text-align: center;
   height: 200px;
   @media screen and (min-width: 768px) {
-    left: 58%;
+    top: 0.5vw;
+    left: 58vw;
     font-size: 25px;
     margin-bottom: 30px;
   }

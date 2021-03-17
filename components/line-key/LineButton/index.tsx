@@ -28,9 +28,9 @@ const LineBtn = styled.button`
 
 export const LineButton = () => {
   return (
-      <LineBtn>
-        <i />
+    <LineBtn>
+      <i />
         友達登録はこちら
-      </LineBtn>
+    </LineBtn>
   );
 }

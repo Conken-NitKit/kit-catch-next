@@ -33,9 +33,9 @@ export default function Table() {
 
   return (
     <>
-      <Header page={"時間割"} />
+      <Header page={"時間割"} left={8} />
       <TimeTable tableValue={timeTable ?? DEFAULT_TIME_TABLE} />
-      <NavigationBar page={"時間割"} height={90} />
+      <NavigationBar page={"時間割"} />
       {/* <TableForm
         day={day}
         time={time}
